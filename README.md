@@ -74,7 +74,8 @@ się jeden dedykowany dla każdego źródła danych w aplikacji.
 
 ## EntityManager
 jakarta.persistence.EntityManager Interfejsu tego używa się do wykonania jakiegoś zadania na bazie danych. W grę wchodzą operacje CRUD. 
-Każda instancja EntityManager jest powiązana z Persistence Context. 
+Każda instancja EntityManager jest powiązana z Persistence Context.
+
 ```EntityManager entityManager = entityManagerFactory.createEntityManager();```
 
 
@@ -125,11 +126,11 @@ wartości klucza głównego,
 danych,
 
 • Mapowanie asocjacji:
--  `@ManyToMany` - dla asocjacji wiele-do-wielu,
--  `@ManyToOne` - dla asocjacji wiele-do-jednego,
--  `@OneToMany` - dla asocjacji jeden-do-wielu,
--  `@OneToOne` - dla asocjacji jeden-do-jednego,
--  `@JoinColumn` - określa kolumnę, na podstawie której tworzona jest relacja między encjami.
+- `@ManyToMany` - dla asocjacji wiele-do-wielu,
+- `@ManyToOne` - dla asocjacji wiele-do-jednego,
+- `@OneToMany` - dla asocjacji jeden-do-wielu,
+- `@OneToOne` - dla asocjacji jeden-do-jednego,
+- `@JoinColumn` - określa kolumnę, na podstawie której tworzona jest relacja między encjami.
 
 
 ## Cykl życia encji
