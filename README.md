@@ -9,6 +9,7 @@ Podejście do definiowania programów za pomocą obiektów odzwierciedlających 
 W praktyce ORM pozwala na mapowanie struktur baz danych (np. tabel) na obiekty i odwrotnie.
 
 OOP <=> ORM  <=> RDB
+
 Object  Mapping  Tabela
 
 ## Encja (Entity)
@@ -69,19 +70,19 @@ jakarta.persistence.EntityManagerFactory Interfejs, który służy do utworzenia
 połączeniem do tej samej bazy danych. EntityManagerFactory może być wiele, ale najczęściej definiuje
 się jeden dedykowany dla każdego źródła danych w aplikacji. 
 
-`EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("zajavkaPersistenceUnitExample");`
+```EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("zajavkaPersistenceUnitExample");```
 
 ## EntityManager
 jakarta.persistence.EntityManager Interfejsu tego używa się do wykonania jakiegoś zadania na bazie danych. W grę wchodzą operacje CRUD. 
 Każda instancja EntityManager jest powiązana z Persistence Context. 
-`EntityManager entityManager = entityManagerFactory.createEntityManager();`
+```EntityManager entityManager = entityManagerFactory.createEntityManager();```
 
 
 ## EntityTransaction
 jakarta.persistence.EntityTransaction Ten interfejs umożliwia grupowanie wielu operacji na danych w jednej transakcji. 
 Innymi słowy, zbiera wszystkie zmiany na powiązanych encjach i wprowadza je na bazie danych jako pojedyncza transakcja, zgodnie z zasadą: wszystko albo nic. 
  
-`EntityTransaction transaction = entityManager.getTransaction();`
+```EntityTransaction transaction = entityManager.getTransaction();```
 
 ## Query
 jakarta.persistence.Query Interfejs używany do wykonywania zapytań na bazie danych. Za dostarczenie Query odpowiada EntityManager.
@@ -108,27 +109,27 @@ Podczas pracy z JPA będziemy korzystali z adnotacji. Adnotacje takie będziemy 
 która będzie nam określała encję w bazie danych.  
 
 • Adnotacje definiujące klasę encji:
-◦ @Entity - Identyfikuje klasę jako encję,
-◦ @Table - Określa do jakiej tabeli odnosi klasa encji,
+- `@Entity` - Identyfikuje klasę jako encję,
+- `@Table` - Określa do jakiej tabeli odnosi klasa encji,
 
 • Adnotacje określające mapowanie kolumn:
-◦ @Column - Określa, na jaką kolumnę z tabeli mapowane jest pole klasy. Dodatkowo umożliwia
+- `@Column` - Określa, na jaką kolumnę z tabeli mapowane jest pole klasy. Dodatkowo umożliwia
 dostosowanie jej atrybutów jak np. updatable, czy insertable, określające czy kolumna jest
 uwzględniania w generowanej instrukcji UPDATE lub INSERT,
-◦ @Id - oznacza, które pole klasy jest kluczem głównym w tabeli,
-◦ @GeneratedValue - Stosowana razem z adnotacją @Id do oznaczenia strategii generowania
+- `@Id `- oznacza, które pole klasy jest kluczem głównym w tabeli,
+- `@GeneratedValue` - Stosowana razem z adnotacją @Id do oznaczenia strategii generowania
 wartości klucza głównego,
-◦ @Enumerated - Pozwala wybrać czy mapowanie enum’a działa na podstawie nazwy enum’a
+- `@Enumerated` - Pozwala wybrać czy mapowanie enum’a działa na podstawie nazwy enum’a
 (EnumType.STRING), czy według jego kolejność (EnumType.ORDINAL)
-◦ @Lob - Oznacza, że pole ma być traktowane jako duży obiekt w typie wspieranym przez bazę
+- `@Lob` - Oznacza, że pole ma być traktowane jako duży obiekt w typie wspieranym przez bazę
 danych,
 
 • Mapowanie asocjacji:
-◦ @ManyToMany - dla asocjacji wiele-do-wielu,
-◦ @ManyToOne - dla asocjacji wiele-do-jednego,
-◦ @OneToMany - dla asocjacji jeden-do-wielu,
-◦ @OneToOne - dla asocjacji jeden-do-jednego,
-◦ @JoinColumn - określa kolumnę, na podstawie której tworzona jest relacja między encjami.
+-  `@ManyToMany` - dla asocjacji wiele-do-wielu,
+-  `@ManyToOne` - dla asocjacji wiele-do-jednego,
+-  `@OneToMany` - dla asocjacji jeden-do-wielu,
+-  `@OneToOne` - dla asocjacji jeden-do-jednego,
+-  `@JoinColumn` - określa kolumnę, na podstawie której tworzona jest relacja między encjami.
 
 
 ## Cykl życia encji
@@ -151,16 +152,17 @@ Wyjątki używane przez JPA dziedziczą po RuntimeException i są unchecked:
 • jakarta.persistence.PersistenceException
  jest to głowna klasa wyjątków JPA , która reprezentuję podstawowe wyjątki. 
 Z niej dziedzicza poszczególne bardziej szczegółowe wyjątki.
-••• jakarta.persistence.TransactionRequiredException
+
+-  jakarta.persistence.TransactionRequiredException
 Pojawia się, kiedy operacja jest wykonywana bez wymaganej aktywnej transakcji.
-••• jakarta.persistence.RollbackException
+-  jakarta.persistence.RollbackException
 Rzucany w przypadku błędu podczas zatwierdzania transakcji (commit()), czyli podczas zapisu
 zmian w bazie danych.
-••• jakarta.persistence.EntityExistsException
+-  jakarta.persistence.EntityExistsException
 Rzucany w przypadku wprowadzania do bazy encji (persist()), która już istnieje.
-••• jakarta.persistence.EntityNotFoundException
+-  jakarta.persistence.EntityNotFoundException
 Rzucany w przypadku braku szukanej encji.
-••• jakarta.persistence.QueryTimeoutException
+-  jakarta.persistence.QueryTimeoutException
 Rzucany w przypadku zbyt długiego wykonywania zapytania.
 
 
