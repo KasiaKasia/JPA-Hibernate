@@ -24,7 +24,8 @@ to klasa w programowaniu obiektowym, która odwzorowuje tabelę w relacyjnej baz
 JPA jest specyfikacją, oznacza to, że żeby móc z niego korzystać, musimy mieć DOSTAWCE, który będzie taką specyfikację implementował np.: Hibernate.
 
 ## JPA składa się z 
-zdjęcie
+<img align="center" alt="JPA" width="100%" src="./jpa.png">
+
 
 
 ## Persistence Unit
@@ -131,16 +132,16 @@ danych,
 
 
 ## Cykl życia encji
-• Transient (New) - Stan nowo utworzonej instancji obiektu encji, która nie jest jeszcze powiązana z
+- Transient (New) - Stan nowo utworzonej instancji obiektu encji, która nie jest jeszcze powiązana z
 EntityManager’em i nie jest zapisana w bazie.
-• Persistent (Managed) - Encja jest już we władaniu persistent context’u, co oznacza, że persistent
+- Persistent (Managed) - Encja jest już we władaniu persistent context’u, co oznacza, że persistent
 provider (np. Hibernate) pilnuje zmian w encji. Do bazy danych zmiany wprowadzane są przez
 metodę persist() wywołaną przez EntityManager’a, co ważne, musi być to wykonane w obrębie
 aktywnej transakcji. Jeżeli encja jest w stanie persistent, zmiany w encji są automatycznie
 synchronizowane na bazie z momentem zatwierdzenia transakcji.
-• Detached - Stan oznaczający, że encja nie jest już zarządzana przez EntityManager’a i nie ma
+- Detached - Stan oznaczający, że encja nie jest już zarządzana przez EntityManager’a i nie ma
 gwarancji na synchronizację encji z bazą danych.
-• Removed (Deleted) - Użycie metody remove() z EntityManager ustawia encję w stan Removed, co
+- Removed (Deleted) - Użycie metody remove() z EntityManager ustawia encję w stan Removed, co
 oznacza, że po zakończeniu transakcji, odpowiedni wiersz w bazie danych zostanie usunięty
 
 
@@ -150,16 +151,16 @@ Wyjątki używane przez JPA dziedziczą po RuntimeException i są unchecked:
 • jakarta.persistence.PersistenceException
  jest to głowna klasa wyjątków JPA , która reprezentuję podstawowe wyjątki. 
 Z niej dziedzicza poszczególne bardziej szczegółowe wyjątki.
-◦ jakarta.persistence.TransactionRequiredException
+••• jakarta.persistence.TransactionRequiredException
 Pojawia się, kiedy operacja jest wykonywana bez wymaganej aktywnej transakcji.
-◦ jakarta.persistence.RollbackException
+••• jakarta.persistence.RollbackException
 Rzucany w przypadku błędu podczas zatwierdzania transakcji (commit()), czyli podczas zapisu
 zmian w bazie danych.
-◦ jakarta.persistence.EntityExistsException
+••• jakarta.persistence.EntityExistsException
 Rzucany w przypadku wprowadzania do bazy encji (persist()), która już istnieje.
-◦ jakarta.persistence.EntityNotFoundException
+••• jakarta.persistence.EntityNotFoundException
 Rzucany w przypadku braku szukanej encji.
-◦ jakarta.persistence.QueryTimeoutException
+••• jakarta.persistence.QueryTimeoutException
 Rzucany w przypadku zbyt długiego wykonywania zapytania.
 
 
